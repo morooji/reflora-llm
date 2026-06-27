@@ -1,7 +1,7 @@
 # Reflora — LLM rewrite service (`reflora-llm`)
 
 > ⚠️ **ALWAYS read the Reflora overview first, before doing anything in this repo:**
-> **`/Users/morooji/Documents/git/reflora-claude/docs/00-Reflora-Overview.md`** (the central hub —
+> **`../reflora-claude/docs/00-Reflora-Overview.md`** (the central hub —
 > sibling folder `../reflora-claude`), then KD-22 in `docs/Key-Decisions.md`. Don't skip it.
 
 This repo is the **LLM component** of the Reflora pipeline: it turns a recorded memory — the narration
@@ -10,7 +10,7 @@ shared **key-points** summary, using **Claude**. The backend (`reflora-backend`)
 this; this repo owns the prompts, the rewrite logic, and the quality evals.
 
 ## Shared knowledge lives in the central hub — read it first
-> **`/Users/morooji/Documents/git/reflora-claude`**
+> **`../reflora-claude`**
 > - Start at **`docs/00-Reflora-Overview.md`** (the index).
 > - **`docs/Key-Decisions.md` → KD-22** — the 5-version pipeline and the tones.
 > - **`docs/Backend-API-Spec.md`** — the `Version`/`VariantChange` shapes (tone / voiceId / focus),

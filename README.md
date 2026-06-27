@@ -6,7 +6,7 @@ transcript + voice Q&A answers) into the **5 retellings** (different tone/length
 rewrite logic, and evals.
 
 > **Design & contract live in the central hub**, not here:
-> `reflora-claude/docs/` — start at `docs/00-Reflora-Overview.md`; see **KD-22** + `Backend-API-Spec.md`.
+> `../reflora-claude/docs/` — start at `docs/00-Reflora-Overview.md`; see **KD-22** + `Backend-API-Spec.md`.
 > See `CLAUDE.md` for the pointer.
 
 ## Scope
