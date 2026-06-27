@@ -16,8 +16,10 @@ this; this repo owns the prompts, the rewrite logic, and the quality evals.
 > - **`docs/Backend-API-Spec.md`** — the `Version`/`VariantChange` shapes (tone / voiceId / focus),
 >   key points, and where this slots into the generation job.
 > - **`docs/System-Architecture.md`** — this is the `C·LLM` component; buy-heavy pipeline.
+> - **`docs/ROADMAP.md`** §3 — this repo's remaining work (prompts, 5-version logic, evals, model-tier choice).
 
-Keep design/decisions canonical **in the hub** (don't copy them here). Update the hub when they change.
+Keep design/decisions canonical **in the hub** (don't copy them here). Update the hub when they change —
+a decision isn't "saved" until it lands there (see the hub's working-model note).
 
 ## Scope (just this component)
 - **In:** `title`, narration `transcript`, `answers[]`, current `key_points[]`, optional per-version
