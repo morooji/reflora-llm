@@ -1,0 +1,17 @@
+[project]
+name = "reflora-llm"
+version = "0.0.1"
+description = "Reflora LLM rewrite — a story into 5 retellings + key points (Claude)"
+requires-python = ">=3.11"
+dependencies = [
+  "anthropic",      # Claude (the rewrite)
+  "pydantic",
+  # optional service mode (call over HTTP from the backend):
+  # "fastapi", "uvicorn[standard]",
+]
+
+[project.optional-dependencies]
+dev = ["ruff", "pytest"]
+
+[tool.ruff]
+line-length = 100
