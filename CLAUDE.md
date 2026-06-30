@@ -40,4 +40,9 @@ app/main.py      optional FastAPI service (or import rewrite() as a library)
 ```
 
 ## Status
-**Scaffold only — do not build it out yet.** Initiated for structure; the next phase wires up Claude.
+**Rewrite implemented** (2026-06-29, branch `llm-rewrite`). `summarize()` + `rewrite()` in
+`app/rewrite.py` call Claude via the official SDK (`messages.parse`, structured output): **Sonnet 4.6
+@ effort medium** for the key points (KD-5), **Opus 4.8 @ effort high** for the 5 retellings (KD-22).
+Adaptive thinking; no temperature/budget_tokens. Prompts in `app/prompts/`, samples in `app/evals/`,
+`scripts/smoke.py` for a real call, unit tests (fake client) + skip-guarded real smoke.
+**Not yet here:** how the backend calls this (library vs HTTP) — a separate wiring slice; full evals pending.
