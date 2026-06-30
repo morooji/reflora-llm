@@ -21,5 +21,8 @@ pyproject.toml
 ```
 
 ## Status
-Scaffold only — the rewrite is the next build. (Pick the Claude model tier against the live reference,
-not from memory.)
+**Rewrite implemented** (branch `llm-rewrite`). `summarize()` + `rewrite()` call Claude via the
+official SDK (`messages.parse`, structured output): **Sonnet 4.6** @ medium for the key points,
+**Opus 4.8** @ high for the 5 retellings (tiers verified against the live reference, not memory).
+Offline unit tests + a skip-guarded real smoke (`scripts/smoke.py`, needs `ANTHROPIC_API_KEY`).
+Wiring this into the backend (library vs HTTP) and full evals are separate slices.

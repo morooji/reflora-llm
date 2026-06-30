@@ -4,8 +4,8 @@ version = "0.0.1"
 description = "Reflora LLM rewrite — a story into 5 retellings + key points (Claude)"
 requires-python = ">=3.11"
 dependencies = [
-  "anthropic",      # Claude (the rewrite)
-  "pydantic",
+  "anthropic==0.113.0",  # Claude (the rewrite) — pinned; verified messages.parse() surface
+  "pydantic>=2",
   # optional service mode (call over HTTP from the backend):
   # "fastapi", "uvicorn[standard]",
 ]
@@ -15,3 +15,6 @@ dev = ["ruff", "pytest"]
 
 [tool.ruff]
 line-length = 100
+
+[tool.pytest.ini_options]
+pythonpath = ["."]   # import `app` from the repo root without an install
