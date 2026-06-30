@@ -1,0 +1,22 @@
+name: CI
+
+# Minimal test runner: run the offline suite on the real 3.11 target (the repo's
+# requires-python floor). The real-Claude smoke skip-guards without ANTHROPIC_API_KEY,
+# so no secrets are needed. Broader CI/CD (matrix, containerization, deploy) is the
+# ROADMAP §1 slice.
+
+on:
+  push:
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -e ".[dev]"
+      - run: pytest
