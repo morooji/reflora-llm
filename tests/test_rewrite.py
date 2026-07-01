@@ -13,7 +13,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from app.rewrite import (
+from reflora_llm.rewrite import (
     KeyPoints,
     RewriteInput,
     RewriteOutput,
@@ -149,7 +149,7 @@ def test_summarize_request_shape():
 
 @pytest.mark.skipif(not os.environ.get("ANTHROPIC_API_KEY"), reason="real API key required")
 def test_real_smoke():
-    from app.evals.samples import SAMPLES
+    from reflora_llm.evals.samples import SAMPLES
 
     out = rewrite(SAMPLES[0])
     assert len(out.versions) == 5

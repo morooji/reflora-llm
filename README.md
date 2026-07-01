@@ -11,13 +11,16 @@ rewrite logic, and evals.
 
 ## Scope
 In: title, narration transcript, answers, key points, optional focus hints.
-Out: 5 versions (warm / short / playful / reflective / poetic) + key points. See `app/rewrite.py`.
+Out: 5 versions (warm / short / playful / reflective / poetic) + key points. See `reflora_llm/rewrite.py`.
+
+Consumed **as a library** (installed with `pip install .`, imported in-process by the backend):
+`from reflora_llm import rewrite, summarize, RewriteInput, RewriteOutput, Version, TONES`.
 
 ## Structure
 ```
-app/rewrite.py   core contract     app/prompts/  templates
-app/main.py      optional service  app/evals/    quality checks
-pyproject.toml
+reflora_llm/rewrite.py   core contract + public API   reflora_llm/prompts/  templates
+reflora_llm/config.py    model tiers + get_client()   reflora_llm/evals/    samples
+scripts/smoke.py  tests/  pyproject.toml
 ```
 
 ## Status

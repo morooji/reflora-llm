@@ -1,6 +1,6 @@
 """Smoke test: run summarize() + rewrite() against the REAL Claude API.
 
-Requires ANTHROPIC_API_KEY. From the repo root:
+Needs reflora_llm installed (`pip install .`) and ANTHROPIC_API_KEY set:
 
     python scripts/smoke.py
 
@@ -10,13 +10,9 @@ Prints the generated key points and the 5 retellings for the first sample memory
 from __future__ import annotations
 
 import os
-import sys
 
-# Allow `python scripts/smoke.py` from the repo root (no install needed).
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from app.evals.samples import SAMPLES  # noqa: E402
-from app.rewrite import rewrite, summarize  # noqa: E402
+from reflora_llm import rewrite, summarize
+from reflora_llm.evals.samples import SAMPLES
 
 
 def main() -> int:
