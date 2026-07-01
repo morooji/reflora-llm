@@ -24,8 +24,10 @@ a decision isn't "saved" until it lands there (see the hub's working-model note)
 ## Scope (just this component)
 - **In:** `title`, narration `transcript`, `answers[]`, current `key_points[]`, optional per-version
   `focus[]` hints. **Out:** 5 `Version`s (tones: warm / short / playful / reflective / poetic) +
-  `key_points`. See `app/rewrite.py` for the contract.
+  `key_points`. See `reflora_llm/rewrite.py` for the contract.
 - Single-version regen applies one tone + focus; full generation produces all 5.
+- **Consumed as a library** (not an HTTP service): the backend `pip install`s this and imports
+  `from reflora_llm import rewrite, summarize, RewriteInput, RewriteOutput, Version, TONES`.
 
 ## Model choice
 Use **Claude**. **Do NOT hardcode a model/tier from memory** — pick it against the **live** model/
@@ -33,10 +35,11 @@ pricing reference (the `claude-api` skill) when implementing, judged by quality/
 
 ## Structure
 ```
-app/rewrite.py   the core contract (RewriteInput → RewriteOutput)
-app/prompts/     prompt templates
-app/evals/       quality checks on real samples
-app/main.py      optional FastAPI service (or import rewrite() as a library)
+reflora_llm/__init__.py  public API (rewrite, summarize, RewriteInput, RewriteOutput, Version, TONES)
+reflora_llm/rewrite.py   the core contract (RewriteInput → RewriteOutput)
+reflora_llm/config.py    model tiers (chosen vs the live reference) + get_client()
+reflora_llm/prompts/     prompt templates
+reflora_llm/evals/       sample inputs for evals + the smoke script
 ```
 
 ## Status

@@ -1,9 +1,11 @@
 name: CI
 
-# Minimal test runner: run the offline suite on the real 3.11 target (the repo's
-# requires-python floor). The real-Claude smoke skip-guards without ANTHROPIC_API_KEY,
-# so no secrets are needed. Broader CI/CD (matrix, containerization, deploy) is the
-# ROADMAP §1 slice.
+# Two minimal jobs on the real 3.11 target (the repo's requires-python floor):
+#   test         — pip install -e ".[dev]" then pytest (the offline suite; the real-Claude
+#                  smoke skip-guards without ANTHROPIC_API_KEY, so no secrets are needed).
+#   import-smoke — clean (non-editable) `pip install .` then import under the reflora_llm
+#                  name, so we validate the built package the backend will consume.
+# Broader CI/CD (matrix, all repos, containerization, deploy) is the ROADMAP §1 slice.
 
 on:
   push:
@@ -20,3 +22,13 @@ jobs:
           python-version: "3.11"
       - run: pip install -e ".[dev]"
       - run: pytest
+
+  import-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install .
+      - run: python -c "import reflora_llm; from reflora_llm import rewrite, summarize, RewriteInput, RewriteOutput, Version, TONES; print('import OK; TONES =', TONES)"

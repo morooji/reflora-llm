@@ -1,20 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "reflora-llm"
-version = "0.0.1"
+version = "0.1.0"
 description = "Reflora LLM rewrite — a story into 5 retellings + key points (Claude)"
 requires-python = ">=3.11"
 dependencies = [
   "anthropic==0.113.0",  # Claude (the rewrite) — pinned; verified messages.parse() surface
   "pydantic>=2",
-  # optional service mode (call over HTTP from the backend):
-  # "fastapi", "uvicorn[standard]",
 ]
 
 [project.optional-dependencies]
 dev = ["ruff", "pytest"]
 
+[tool.setuptools.packages.find]
+include = ["reflora_llm*"]   # ship the package only — not tests/ or scripts/
+
+[tool.setuptools.package-data]
+reflora_llm = ["py.typed"]   # PEP 561 marker so importers get our type hints
+
 [tool.ruff]
 line-length = 100
-
-[tool.pytest.ini_options]
-pythonpath = ["."]   # import `app` from the repo root without an install

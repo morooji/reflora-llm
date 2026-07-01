@@ -6,7 +6,7 @@ arrives from the backend after STT.
 
 from __future__ import annotations
 
-from app.rewrite import RewriteInput
+from ..rewrite import RewriteInput
 
 SAMPLES: list[RewriteInput] = [
     RewriteInput(
