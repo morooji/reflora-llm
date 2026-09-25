@@ -36,3 +36,46 @@ SAMPLES: list[RewriteInput] = [
         ],
     ),
 ]
+
+# KD-32 guardrails (owner 2026-09-24): spoken self-corrections are EDITS — only the corrected
+# fact may reach a key point. Used by the skip-guarded live tests in tests/test_guardrails.py.
+CORRECTION_SAMPLES: list[RewriteInput] = [
+    RewriteInput(
+        title="The beach trip",
+        transcript=(
+            "That summer we drove all the way to California, sorry, I meant Carolina — North "
+            "Carolina, the Outer Banks. Your grandmother packed the same cooler she used every "
+            "year and we ate cold chicken on the sand while the kids chased the waves."
+        ),
+    ),
+    RewriteInput(
+        title="How we met",
+        transcript=(
+            "She was born in — no wait, we met in 1962, at the dance hall on Front Street. I "
+            "stepped on her foot twice before she agreed to a second song, and we were married "
+            "the following spring."
+        ),
+    ),
+]
+
+# KD-32 guardrails (owner 2026-09-24): spoken self-corrections are EDITS — only the corrected
+# fact may reach a key point. Used by the skip-guarded live tests in tests/test_guardrails.py.
+CORRECTION_SAMPLES: list[RewriteInput] = [
+    RewriteInput(
+        title="The beach trip",
+        transcript=(
+            "That summer we drove all the way to California, sorry, I meant Carolina — North "
+            "Carolina, the Outer Banks. Your grandmother packed the same cooler she used every "
+            "year and we ate cold chicken on the sand while the kids chased the waves."
+        ),
+    ),
+    RewriteInput(
+        title="How we met",
+        transcript=(
+            "She was born in — no wait, we met in 1962, at the dance hall on Front Street. I "
+            "stepped on her foot twice before she agreed to a second song, and we were married "
+            "the following spring."
+        ),
+    ),
+]
+
