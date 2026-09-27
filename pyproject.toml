@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "reflora-llm"
-version = "0.3.0"
-description = "Reflora LLM rewrite — a story into 5 retellings + key points (Claude)"
+version = "0.4.0"
+description = "Reflora LLM rewrite — a story into 5 retellings + key points, plus the fact-check pass (Claude)"
 requires-python = ">=3.11"
 dependencies = [
   "anthropic==0.113.0",  # Claude (the rewrite) — pinned; verified messages.parse() surface

@@ -14,7 +14,11 @@ In: title, narration transcript, answers, key points, optional focus hints.
 Out: 5 versions (warm / short / playful / reflective / poetic) + key points. See `reflora_llm/rewrite.py`.
 
 Consumed **as a library** (installed with `pip install .`, imported in-process by the backend):
-`from reflora_llm import rewrite, summarize, RewriteInput, RewriteOutput, Version, TONES`.
+`from reflora_llm import rewrite, summarize, verify, RewriteInput, RewriteOutput, Version, Flag, TONES`.
+
+**0.4.0 — `verify()` (KD-35 fact-check flags):** a separate, cheap pass after the rewrite that returns, per
+retelling, the phrases (quoted verbatim) stating a fact absent from the transcript + answers + key points.
+Informational only — the caregiver stays the gate. See `reflora_llm/verify.py`.
 
 ## Structure
 ```
