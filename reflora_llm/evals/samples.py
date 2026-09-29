@@ -79,3 +79,35 @@ CORRECTION_SAMPLES: list[RewriteInput] = [
     ),
 ]
 
+
+
+# KD-35 fact-check flags (owner 2026-09-27): the live eval for verify(). Sources = SAMPLES[0]
+# ("The day we brought Jack home"); one retelling plants invented facts, one is clean.
+# Used by the skip-guarded live tests in tests/test_verify.py.
+VERIFY_SOURCE = SAMPLES[0]
+VERIFY_KEY_POINTS = [
+    "Brought Jack home from the hospital on a freezing February morning",
+    "Grandma knitted a tiny yellow blanket; only his face showed",
+    "The car heater barely worked; Dad drove about ten miles an hour",
+    "Dad's hands shook buckling the car seat",
+    "The dog kept sniffing the car seat",
+    "They sat on the sofa staring at him for what felt like hours",
+    "The blanket is still in the chest upstairs",
+]
+# Invented: the date "the fourteenth of February", "Aunt Rose", "at Saint Mary's", "eleven pounds".
+VERIFY_PLANTED = (
+    "It was the fourteenth of February, a freezing morning, when we brought Jack home from "
+    "Saint Mary's. Aunt Rose had driven over to see him, and he weighed eleven pounds. Grandma's "
+    "tiny yellow blanket was wrapped around him so only his face showed. Your dad crawled along "
+    "at ten miles an hour, hands shaking, while the dog sniffed the car seat and we sat on the "
+    "sofa just staring at him."
+)
+VERIFY_PLANTED_FACTS = ["fourteenth of February", "Saint Mary's", "Aunt Rose", "eleven pounds"]
+# Clean: paraphrase + mood only — must return [].
+VERIFY_CLEAN = (
+    "Oh, that freezing February morning! We brought Jack home from the hospital bundled in the "
+    "tiny yellow blanket Grandma had knitted, just his little face peeking out. The heater in the "
+    "car was useless, so your dad crept along at ten miles an hour, terrified of every bump, his "
+    "hands trembling as he buckled the seat. The dog could not stop sniffing that car seat. And "
+    "then we simply sat on the sofa and stared at him, for what felt like hours."
+)
