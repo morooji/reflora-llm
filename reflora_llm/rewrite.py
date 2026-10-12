@@ -28,6 +28,7 @@ from .config import (
 )
 from .prompts.rewrite import REWRITE_SYSTEM, build_rewrite_user
 from .prompts.summarize import SUMMARIZE_SYSTEM, build_summarize_user
+from .usage import record_usage
 
 # The 5 tone presets (mirror VARIANT_TONES in the UI / Backend-API-Spec, KD-22).
 TONES = ["warm", "short", "playful", "reflective", "poetic"]
@@ -84,6 +85,7 @@ def summarize(transcript: str, answers: Optional[List[str]] = None, *, client=No
         system=SUMMARIZE_SYSTEM,
         messages=[{"role": "user", "content": build_summarize_user(transcript, answers or [])}],
     )
+    record_usage("summarize", SUMMARIZE_MODEL, resp)
     return list(resp.parsed_output.key_points)
 
 
@@ -109,6 +111,7 @@ def rewrite(inp: RewriteInput, *, client=None) -> RewriteOutput:
         system=REWRITE_SYSTEM,
         messages=[{"role": "user", "content": build_rewrite_user(inp, key_points)}],
     )
+    record_usage("rewrite", REWRITE_MODEL, resp)
     result = resp.parsed_output
     versions = [Version(tone=v.tone, transcript=v.text) for v in result.versions]
     return RewriteOutput(key_points=list(result.key_points) or key_points, versions=versions)

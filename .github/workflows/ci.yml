@@ -31,4 +31,4 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install .
-      - run: python -c "import reflora_llm; from reflora_llm import rewrite, summarize, verify, RewriteInput, RewriteOutput, Version, Flag, TONES; print('import OK; TONES =', TONES)"
+      - run: python -c "import reflora_llm; from reflora_llm import rewrite, summarize, verify, capture_usage, RewriteInput, RewriteOutput, Version, Flag, TONES; print('import OK; TONES =', TONES)"

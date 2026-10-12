@@ -19,6 +19,7 @@ from pydantic import BaseModel
 
 from .config import THINKING, VERIFY_EFFORT, VERIFY_MAX_TOKENS, VERIFY_MODEL, get_client
 from .prompts.verify import VERIFY_SYSTEM, build_verify_user
+from .usage import record_usage
 
 MAX_FLAG_WORDS = 20  # the prompt asks for ~12; anything far longer is a paraphrase, not a quote
 
@@ -82,6 +83,7 @@ def verify(
             }
         ],
     )
+    record_usage("verify", VERIFY_MODEL, resp)
     parsed = list(resp.parsed_output.versions)[: len(versions)]
     parsed += [VersionFlags(flags=[])] * (len(versions) - len(parsed))  # pad a short answer
 

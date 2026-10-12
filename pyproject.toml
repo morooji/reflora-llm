@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "reflora-llm"
-version = "0.4.0"
+version = "0.5.0"
 description = "Reflora LLM rewrite — a story into 5 retellings + key points, plus the fact-check pass (Claude)"
 requires-python = ">=3.11"
 dependencies = [
